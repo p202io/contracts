@@ -87,7 +87,7 @@ contract('WithdrawManager', async function(accounts) {
 
         // root token / child chain / child token
         rootToken = await RootToken.new('Root Token', 'ROOT')
-        exitNFTContract = await ExitNFT.new('Matic Exit NFT', 'MATIC-NFT', {
+        exitNFTContract = await ExitNFT.new('Project 202 Exit NFT', 'P202-NFT', {
           from: owner
         })
 
@@ -362,7 +362,7 @@ contract('WithdrawManager', async function(accounts) {
       before(async function() {
         // root token / child chain / child token
         rootToken = await RootToken.new('Root Token', 'ROOT')
-        exitNFTContract = await ExitNFT.new('Matic Exit NFT', 'MATIC-NFT')
+        exitNFTContract = await ExitNFT.new('Project 202 Exit NFT', 'P202-NFT')
         rootChain = await RootChainMock.new()
         depositManager = await DepositManagerMock.new({ from: owner })
         withdrawManager = await WithdrawManagerMock.new({ from: owner })
@@ -655,7 +655,7 @@ contract('WithdrawManager', async function(accounts) {
       before(async function() {
         // root token / child chain / child token
         rootToken = await RootERC721.new('Root ERC721', 'R721')
-        exitNFTContract = await ExitNFT.new('Matic Exit NFT', 'MATIC-NFT')
+        exitNFTContract = await ExitNFT.new('Project 202 Exit NFT', 'P202-NFT')
         rootChain = await RootChainMock.new()
         depositManager = await DepositManagerMock.new({ from: owner })
         withdrawManager = await WithdrawManagerMock.new({ from: owner })

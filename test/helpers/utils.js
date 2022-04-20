@@ -29,7 +29,7 @@ if (process.env.SOLIDITY_COVERAGE) {
 }
 
 export const ZeroAddress = '0x0000000000000000000000000000000000000000'
-export let ChildMaticTokenAddress = '0x0000000000000000000000000000000000001010'
+export let ChildP202TokenAddress = '0x0000000000000000000000000000000000001010'
 export const scalingFactor = web3.utils.toBN(10).pow(web3.utils.toBN(18))
 
 export function getSigs(wallets, votedata, order = true) {
@@ -275,14 +275,14 @@ export async function deposit(
   } else {
     depositBlockId = '0x' + crypto.randomBytes(32).toString('hex')
   }
-  const deposit = await fireDepositFromMainToMatic(childChain, '0xa' /* dummy id */, user, rootContract.address, amountOrToken, depositBlockId)
+  const deposit = await fireDepositFromMainToChild(childChain, '0xa' /* dummy id */, user, rootContract.address, amountOrToken, depositBlockId)
   if (options.writeToFile) {
     await writeToFile(options.writeToFile, deposit.receipt)
   }
   return deposit
 }
 
-export function fireDepositFromMainToMatic(childChain, eventId, user, tokenAddress, amountOrToken, depositBlockId) {
+export function fireDepositFromMainToChild(childChain, eventId, user, tokenAddress, amountOrToken, depositBlockId) {
   // ACLed on onlyOwner
   return childChain.onStateReceive(
     eventId,

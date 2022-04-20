@@ -7,6 +7,11 @@ const ChildChain = artifacts.require('ChildChain')
 const MRC20 = artifacts.require('MRC20')
 
 module.exports = async function(deployer, network, accounts) {
+  if (deployer.network !== 'bor') {
+    return
+  }
+  console.log(deployer.network);
+
   deployer.then(async() => {
     await deployer.deploy(SafeMath)
     await deployer.link(SafeMath, [ChildChain])
@@ -15,10 +20,10 @@ module.exports = async function(deployer, network, accounts) {
     const childChain = await ChildChain.deployed()
     const contractAddresses = utils.getContractAddresses()
 
-    let MaticWeth = await childChain.addToken(
+    let P202Weth = await childChain.addToken(
       accounts[0],
-      contractAddresses.root.tokens.MaticWeth,
-      'ETH on Matic',
+      contractAddresses.root.tokens.P202Weth,
+      'ETH on Project 202',
       'ETH',
       18,
       false // _isERC721
@@ -42,19 +47,19 @@ module.exports = async function(deployer, network, accounts) {
       true // _isERC721
     )
 
-    const maticToken = await MRC20.at('0x0000000000000000000000000000000000001010')
-    const maticOwner = await maticToken.owner()
+    const p202Token = await MRC20.at('0x0000000000000000000000000000000000001010')
+    const maticOwner = await p202Token.owner()
     if (maticOwner === '0x0000000000000000000000000000000000000000') {
       // matic contract at 0x1010 can only be initialized once, after the bor image starts to run
-      await maticToken.initialize(ChildChain.address, contractAddresses.root.tokens.MaticToken)
+      await p202Token.initialize(ChildChain.address, contractAddresses.root.tokens.P202Token)
     }
-    await childChain.mapToken(contractAddresses.root.tokens.MaticToken, '0x0000000000000000000000000000000000001010', false)
+    await childChain.mapToken(contractAddresses.root.tokens.P202Token, '0x0000000000000000000000000000000000001010', false)
 
     contractAddresses.child = {
       ChildChain: ChildChain.address,
       tokens: {
-        MaticWeth: MaticWeth.logs.find(log => log.event === 'NewToken').args.token,
-        MaticToken: '0x0000000000000000000000000000000000001010',
+        P202Weth: P202Weth.logs.find(log => log.event === 'NewToken').args.token,
+        P202Token: '0x0000000000000000000000000000000000001010',
         TestToken: TestToken.logs.find(log => log.event === 'NewToken').args.token,
         RootERC721: RootERC721.logs.find(log => log.event === 'NewToken').args.token
       }

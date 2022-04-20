@@ -42,7 +42,7 @@ class Deployer {
     this.stakingInfo = await contracts.StakingInfo.new(this.registry.address)
     this.slashingManager = await contracts.SlashingManager.new(this.registry.address, this.stakingInfo.address, 'heimdall-P5rXwg')
     this.rootChain = await this.deployRootChain()
-    this.stakingNFT = await contracts.StakingNFT.new('Matic Validator', 'MV')
+    this.stakingNFT = await contracts.StakingNFT.new('Project 202 Validator', 'P202V')
 
     let proxy = await contracts.StakeManagerProxy.new(
       utils.ZeroAddress
@@ -183,7 +183,7 @@ class Deployer {
     this.rootChain = await this.deployRootChain()
     this.stakingInfo = await contracts.StakingInfo.new(this.registry.address)
     this.stakeToken = await contracts.TestToken.new('Stake Token', 'STAKE')
-    this.stakingNFT = await contracts.StakingNFT.new('Matic Validator', 'MV')
+    this.stakingNFT = await contracts.StakingNFT.new('Project 202 Validator', 'P202V')
 
     let stakeManager = await contracts.StakeManagerTestable.new()
     const rootChainOwner = wallets[1]
@@ -247,16 +247,16 @@ class Deployer {
     return this.rootChain
   }
 
-  async deployMaticWeth() {
-    const maticWeth = await contracts.MaticWETH.new()
+  async deployWethToken() {
+    const wethToken = await contracts.P202WETH.new()
     await Promise.all([
-      this.mapToken(maticWeth.address, maticWeth.address, false /* isERC721 */),
+      this.mapToken(wethToken.address, wethToken.address, false /* isERC721 */),
       this.updateContractMap(
         ethUtils.keccak256('wethToken'),
-        maticWeth.address
+        wethToken.address
       )
     ])
-    return maticWeth
+    return wethToken
   }
 
   async deployGovernance() {
@@ -469,8 +469,8 @@ class Deployer {
     return { rootERC20, childToken, childTokenProxy  }
   }
 
-  async deployMaticToken() {
-    if (!this.globalMatic) throw Error('global matic token is not initialized')
+  async deployP202Token() {
+    if (!this.globalP202) throw Error('global p202 token is not initialized')
     if (!this.childChain) throw Error('child chain is not initialized')
     // Since we cannot initialize MRC20 repeatedly, deploy a dummy MRC20 to test it
     // not mentioning the gas limit fails with "The contract code couldn't be stored, please check your gas limit." intermittently which is super weird
@@ -480,7 +480,7 @@ class Deployer {
     await childToken.initialize(this.childChain.address, rootERC20.address)
     await this.childChain.mapToken(rootERC20.address, childToken.address, false /* isERC721 */)
     // send some ether to dummy MRC20, so that deposits can be processed
-    await this.globalMatic.childToken.deposit(childToken.address, web3.utils.toBN(100).mul(utils.scalingFactor))
+    await this.globalP202.childToken.deposit(childToken.address, web3.utils.toBN(100).mul(utils.scalingFactor))
     return { rootERC20, childToken }
   }
 
@@ -562,23 +562,23 @@ class Deployer {
     }
 
     await this.childChain.changeStateSyncerAddress(owner)
-    if (!this.globalMatic) {
-      // MRC20 comes as a genesis-contract at utils.ChildMaticTokenAddress
+    if (!this.globalP202) {
+      // MRC20 comes as a genesis-contract at utils.ChildP202TokenAddress
       if (process.env.SOLIDITY_COVERAGE) {
-        utils.ChildMaticTokenAddress = (await contracts.MRC20.new()).address
-        Object.freeze(utils.ChildMaticTokenAddress)
+        utils.ChildP202TokenAddress = (await contracts.MRC20.new()).address
+        Object.freeze(utils.ChildP202TokenAddress)
       }
 
-      this.globalMatic = { childToken: await contracts.MRC20.at(utils.ChildMaticTokenAddress) }
-      const maticOwner = await this.globalMatic.childToken.owner()
-      if (maticOwner === '0x0000000000000000000000000000000000000000') {
-        // matic contract at 0x1010 can only be initialized once, after the bor image starts to run
-        await this.globalMatic.childToken.initialize(owner, utils.ZeroAddress)
+      this.globalP202 = { childToken: await contracts.MRC20.at(utils.ChildP202TokenAddress) }
+      const p202Owner = await this.globalP202.childToken.owner()
+      if (p202Owner === '0x0000000000000000000000000000000000000000') {
+        // P202 contract at 0x1010 can only be initialized once, after the bor image starts to run
+        await this.globalP202.childToken.initialize(owner, utils.ZeroAddress)
       }
     }
     if (this.registry) {
       // When a new set of contracts is deployed, we should map MRC20 on root, though we cannot initialize it more than once in its lifetime
-      this.globalMatic.rootERC20 = await this.deployTestErc20({ mapToken: true, childTokenAdress: utils.ChildMaticTokenAddress })
+      this.globalP202.rootERC20 = await this.deployTestErc20({ mapToken: true, childTokenAdress: utils.ChildP202TokenAddress })
     }
     if (options.updateRegistry) {
       await this.updateContractMap(

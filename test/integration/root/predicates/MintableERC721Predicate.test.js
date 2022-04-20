@@ -212,7 +212,7 @@ contract('MintableERC721Predicate @skip-on-coverage', async function(accounts) {
     const logs = logDecoder.decodeLogs(result.receipt.rawLogs)
     const NewDepositBlockEvent = logs.find(log => log.event === 'NewDepositBlock')
     expect((await childContracts.rootERC721.ownerOf(tokenId))).to.equal(depositManager.address)
-    const deposit = await utils.fireDepositFromMainToMatic(
+    const deposit = await utils.fireDepositFromMainToChild(
       childContracts.childChain,
       '0xa' /* dummy id */,
       bob,

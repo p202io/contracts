@@ -7,7 +7,7 @@ import {
   RootChain,
   RootToken,
   RootERC721,
-  MaticWETH
+  P202WETH
 } from '../helpers/contracts'
 import { linkLibs } from '../helpers/utils'
 import EVMRevert from '../helpers/evm-revert'
@@ -201,7 +201,7 @@ contract('DepositManager', async function(accounts) {
     let ethAmount
 
     beforeEach(async function() {
-      wethToken = await MaticWETH.new()
+      wethToken = await P202WETH.new()
       ethAmount = web3.toWei('0.01', 'ether')
       // set weth token and map weth token
       await depositManager.setWETHToken(wethToken.address)

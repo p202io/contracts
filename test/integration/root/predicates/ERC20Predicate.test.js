@@ -73,8 +73,8 @@ contract('ERC20Predicate @skip-on-coverage', async function(accounts) {
       }
     })
 
-    it('Exit with burnt Matic tokens', async function() {
-      const { rootERC20, childToken } = await deployer.deployMaticToken()
+    it('Exit with burnt P202 tokens', async function() {
+      const { rootERC20, childToken } = await deployer.deployP202Token()
       childContracts.rootERC20 = rootERC20
       childContracts.childToken = childToken
       await utils.deposit(
@@ -361,11 +361,11 @@ contract('ERC20Predicate @skip-on-coverage', async function(accounts) {
     })
   })
 
-  describe('startExit (MoreVP style) for Matic Token', async function() {
+  describe('startExit (MoreVP style) for P202 Token', async function() {
     beforeEach(async function() {
       contracts.withdrawManager = await deployer.deployWithdrawManager()
       contracts.ERC20Predicate = await deployer.deployErc20Predicate()
-      const { rootERC20, childToken } = await deployer.deployMaticToken()
+      const { rootERC20, childToken } = await deployer.deployP202Token()
       childContracts.rootERC20 = rootERC20
       childContracts.childToken = childToken
     })
@@ -630,7 +630,7 @@ contract('ERC20Predicate @skip-on-coverage', async function(accounts) {
     beforeEach(async function() {
       contracts.withdrawManager = await deployer.deployWithdrawManager()
       contracts.ERC20Predicate = await deployer.deployErc20Predicate()
-      // This is required to remap matic child at 0x1010 to a fresh root token, so that exits for it can be processed
+      // This is required to remap P202 child at 0x1010 to a fresh root token, so that exits for it can be processed
       childContracts = await deployer.initializeChildChain(accounts[0])
       // statefulUtils = new StatefulUtils()
     })
@@ -641,9 +641,9 @@ contract('ERC20Predicate @skip-on-coverage', async function(accounts) {
       const { block, blockProof, headerNumber, reference } = await statefulUtils.submitCheckpoint(contracts.rootChain, receipt, accounts)
 
       let exitTx = await predicateTestUtils.getRawInflightTx(
-        // cannot use a dummy MRC20 (deployed using deployer.deployMaticToken) because LogFeeTransfer emits token as 0x1010
+        // cannot use a dummy MRC20 (deployed using deployer.deployP202Token) because LogFeeTransfer emits token as 0x1010
         // Hence we need to make use of corresponding mapped root token for adding exits to queue
-        deployer.globalMatic.childToken.withdraw.bind(null, halfAmount),
+        deployer.globalP202.childToken.withdraw.bind(null, halfAmount),
         user /* from */, web3Child, null /* gas */, { value: halfAmount }
       )
 
@@ -654,7 +654,7 @@ contract('ERC20Predicate @skip-on-coverage', async function(accounts) {
       log.event.should.equal('ExitStarted')
       expect(log.args).to.include({
         exitor: user,
-        token: deployer.globalMatic.rootERC20.address
+        token: deployer.globalP202.rootERC20.address
       })
       // utils.assertBigNumberEquality(log.args.amount, halfAmount)
     })
@@ -665,9 +665,9 @@ contract('ERC20Predicate @skip-on-coverage', async function(accounts) {
       const { block, blockProof, headerNumber, reference } = await statefulUtils.submitCheckpoint(contracts.rootChain, receipt, accounts)
 
       let exitTx = await predicateTestUtils.getRawInflightTx(
-        // cannot use a dummy MRC20 (deployed using deployer.deployMaticToken) because LogFeeTransfer emits token as 0x1010
+        // cannot use a dummy MRC20 (deployed using deployer.deployP202Token) because LogFeeTransfer emits token as 0x1010
         // Hence we need to make use of corresponding mapped root token for adding exits to queue
-        deployer.globalMatic.childToken.transfer.bind(null, other, halfAmount),
+        deployer.globalP202.childToken.transfer.bind(null, other, halfAmount),
         user /* from */, web3Child, null /* gas */, { value: halfAmount }
       )
 
@@ -678,7 +678,7 @@ contract('ERC20Predicate @skip-on-coverage', async function(accounts) {
       log.event.should.equal('ExitStarted')
       expect(log.args).to.include({
         exitor: user,
-        token: deployer.globalMatic.rootERC20.address
+        token: deployer.globalP202.rootERC20.address
       })
       // utils.assertBigNumberEquality(log.args.amount, halfAmount)
     })

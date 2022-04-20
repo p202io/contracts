@@ -73,8 +73,8 @@ contract('ERC20PredicateBurnOnly @skip-on-coverage', async function(accounts) {
       }
     })
 
-    it('Exit with burnt Matic tokens', async function() {
-      const { rootERC20, childToken } = await deployer.deployMaticToken()
+    it('Exit with burnt P202 tokens', async function() {
+      const { rootERC20, childToken } = await deployer.deployP202Token()
       childContracts.rootERC20 = rootERC20
       childContracts.childToken = childToken
       await utils.deposit(

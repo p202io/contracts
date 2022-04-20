@@ -1,6 +1,6 @@
 const contracts = require('../contractAddresses.json')
 
-const RootToken = artifacts.require('TestToken')
+const RootToken = artifacts.require('P202Token')
 const Registry = artifacts.require('Registry')
 const StakeManager = artifacts.require('StakeManager')
 const StakingInfo = artifacts.require('StakingInfo')
@@ -29,10 +29,10 @@ async function stake() {
 
   const accounts = await web3.eth.getAccounts()
   const stakeManager = await getStakeManager()
-  const maticToken = await RootToken.at(contracts.root.tokens.MaticToken)
-  console.log({ stakeManager: stakeManager.address, maticToken: maticToken.address, stakeToken: await stakeManager.token() })
-  console.log('Sender accounts has a balanceOf', (await maticToken.balanceOf(accounts[0])).toString())
-  await maticToken.approve(stakeManager.address, web3.utils.toWei('1000000'))
+  const p202Token = await RootToken.at(contracts.root.tokens.P202Token)
+  console.log({ stakeManager: stakeManager.address, p202Token: p202Token.address, stakeToken: await stakeManager.token() })
+  console.log('Sender accounts has a balanceOf', (await p202Token.balanceOf(accounts[0])).toString())
+  await p202Token.approve(stakeManager.address, web3.utils.toWei('1000000'))
   console.log('sent approve tx, staking now...')
   // Remember to change the 4th parameter to false if delegation is not required
   await stakeManager.stakeFor(validatorAccount, stakeAmount, heimdallFee, true, pubkey)

@@ -101,7 +101,7 @@ contract('ValidatorShare', async function() {
   async function doDeploy() {
     await freshDeploy.call(this)
 
-    this.stakeToken = await TestToken.new('MATIC', 'MATIC')
+    this.stakeToken = await TestToken.new('Project 202 Token', 'P202')
 
     await this.stakeManager.setStakingToken(this.stakeToken.address)
 
@@ -176,7 +176,7 @@ contract('ValidatorShare', async function() {
     function prepareForTests() {
       before(doDeploy)
       before(async function() {
-        this.testToken = await TestToken.new('MATIC2', 'MATIC2')
+        this.testToken = await TestToken.new('Project 202 Token 2', 'P2022')
         this.value = toWei('10')
         await this.testToken.mint(this.validatorContract.address, this.value)
 
@@ -1862,8 +1862,8 @@ contract('ValidatorShare', async function() {
       let initialAliceSharesBalance
       let initialBobSharesBalance
 
-      let initialAliceMaticBalance
-      let initialBobMaticBalance
+      let initialAliceP202Balance
+      let initialBobP202Balance
 
       before('Alice and Bob purchases voucher, checkpoint is commited', async function() {
         await buyVoucher(this.validatorContract, ValidatorDefaultStake, this.alice)
@@ -1872,8 +1872,8 @@ contract('ValidatorShare', async function() {
         initialAliceSharesBalance = await this.validatorContract.balanceOf(this.alice)
         initialBobSharesBalance = await this.validatorContract.balanceOf(this.bob)
 
-        initialAliceMaticBalance = await this.stakeToken.balanceOf(this.alice)
-        initialBobMaticBalance = await this.stakeToken.balanceOf(this.bob)
+        initialAliceP202Balance = await this.stakeToken.balanceOf(this.alice)
+        initialBobP202Balance = await this.stakeToken.balanceOf(this.bob)
 
         await checkPoint([this.validatorUser], this.rootChainOwner, this.stakeManager)
       })
@@ -1890,8 +1890,8 @@ contract('ValidatorShare', async function() {
         })
       })
 
-      it('Alice must claim 3000 matic', async function() {
-        assertBigNumberEquality(await this.stakeToken.balanceOf(this.alice), new BN(initialAliceMaticBalance).add(new BN(toWei('3000'))))
+      it('Alice must claim 3000 P202', async function() {
+        assertBigNumberEquality(await this.stakeToken.balanceOf(this.alice), new BN(initialAliceP202Balance).add(new BN(toWei('3000'))))
       })
 
       it('Alice must have 0 liquid rewards', async function() {
@@ -1914,8 +1914,8 @@ contract('ValidatorShare', async function() {
         })
       })
 
-      it('Bob must claim 3000 matic', async function() {
-        assertBigNumberEquality(await this.stakeToken.balanceOf(this.bob), new BN(initialBobMaticBalance).add(new BN(toWei('3000'))))
+      it('Bob must claim 3000 P202', async function() {
+        assertBigNumberEquality(await this.stakeToken.balanceOf(this.bob), new BN(initialBobP202Balance).add(new BN(toWei('3000'))))
       })
 
       it('Bob must have 0 liquid rewards', async function() {

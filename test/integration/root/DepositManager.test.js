@@ -38,9 +38,9 @@ contract('DepositManager @skip-on-coverage', async function(accounts) {
       utils.assertBigNumberEquality(await e20.childToken.balanceOf(bob), amount)
     })
 
-    it('deposit Matic Tokens', async function() {
+    it('deposit P202 Tokens', async function() {
       const bob = '0x' + crypto.randomBytes(20).toString('hex')
-      const e20 = await deployer.deployMaticToken()
+      const e20 = await deployer.deployP202Token()
       utils.assertBigNumberEquality(await e20.childToken.balanceOf(bob), 0)
       await utils.deposit(
         depositManager,
