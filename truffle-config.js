@@ -77,7 +77,7 @@ module.exports = {
           `wss://eth-ropsten.alchemyapi.io/v2/${ALCHEMY_API_KEY}`
           //`https://eth-ropsten.alchemyapi.io/v2/${ALCHEMY_API_KEY}`
         ),
-      network_id: '*', // 3
+      network_id: '3', // 3
       gas: 8000000,
       gasPrice: 25000000000, // 25 gwei
       skipDryRun: true
