@@ -5,6 +5,6 @@ const StakingNFT = artifacts.require('StakingNFT')
 module.exports = async function(deployer) {
   deployer.then(async() => {
     await deployer.deploy(StakingInfo, Registry.address)
-    await deployer.deploy(StakingNFT, 'Project 202 Validator', 'P202V')
+    await deployer.deploy(StakingNFT, 'Project202 Validator', 'P202V')
   })
 }

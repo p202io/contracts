@@ -3,9 +3,9 @@ pragma solidity ^0.5.11;
 import "./BaseERC20NoSig.sol";
 
 /**
- * @title Project 202 token contract
- * @notice This contract is an ECR20 like wrapper over native ether (Project 202 token) transfers on the Project 202 chain
- * @dev ERC20 methods have been made payable while keeping their method signature same as other ChildERC20s on Project 202
+ * @title Project202 token contract
+ * @notice This contract is an ECR20 like wrapper over native ether (Project202 token) transfers on the Project202 chain
+ * @dev ERC20 methods have been made payable while keeping their method signature same as other ChildERC20s on Project202
  */
 contract MRC20 is BaseERC20NoSig {
     event Transfer(address indexed from, address indexed to, uint256 value);
@@ -66,7 +66,7 @@ contract MRC20 is BaseERC20NoSig {
     }
 
     function name() public pure returns (string memory) {
-        return "Project 202 Token";
+        return "Project202";
     }
 
     function symbol() public pure returns (string memory) {

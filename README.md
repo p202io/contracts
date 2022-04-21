@@ -1,5 +1,5 @@
-# Project 202 Network contracts
-Ethereum smart contracts that power the [Project 202 Network](https://p202.io).
+# Project202 Network contracts
+Ethereum smart contracts that power the [Project202 Network](https://p202.io).
 
 ### Install dependencies with
 ```

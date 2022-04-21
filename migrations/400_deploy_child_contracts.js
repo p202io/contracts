@@ -23,7 +23,7 @@ module.exports = async function(deployer, network, accounts) {
     let P202Weth = await childChain.addToken(
       accounts[0],
       contractAddresses.root.tokens.P202Weth,
-      'ETH on Project 202',
+      'ETH on Project202',
       'ETH',
       18,
       false // _isERC721

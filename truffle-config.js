@@ -143,7 +143,7 @@ module.exports = {
   },
   plugins: ['solidity-coverage', 'truffle-plugin-verify', 'truffle-contract-size'],
   verify: {
-    preamble: 'Project 202 Network contracts'
+    preamble: 'Project202 Network contracts'
   },
   api_keys: {
     etherscan: ETHERSCAN_API_KEY,

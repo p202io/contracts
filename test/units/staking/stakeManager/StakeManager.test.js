@@ -203,7 +203,7 @@ contract('StakeManager', async function(accounts) {
     async function batchDeploy() {
       await prepareForTest(4, 2).call(this)
 
-      this.stakeToken = await TestToken.new('Project 202 Token', 'P202')
+      this.stakeToken = await TestToken.new('Project202', 'P202')
 
       await this.governance.update(
         this.stakeManager.address,
@@ -2628,7 +2628,7 @@ contract('StakeManager', async function(accounts) {
       })
     })
 
-    describe('when Chad migrates to Project 202 validator', function() {
+    describe('when Chad migrates to Project202 validator', function() {
       const aliceId = '8'
       const bobId = '2'
       const delegator = wallets[9].getChecksumAddressString()

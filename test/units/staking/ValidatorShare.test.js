@@ -101,7 +101,7 @@ contract('ValidatorShare', async function() {
   async function doDeploy() {
     await freshDeploy.call(this)
 
-    this.stakeToken = await TestToken.new('Project 202 Token', 'P202')
+    this.stakeToken = await TestToken.new('Project202', 'P202')
 
     await this.stakeManager.setStakingToken(this.stakeToken.address)
 
@@ -176,7 +176,7 @@ contract('ValidatorShare', async function() {
     function prepareForTests() {
       before(doDeploy)
       before(async function() {
-        this.testToken = await TestToken.new('Project 202 Token 2', 'P2022')
+        this.testToken = await TestToken.new('Project202 2', 'P2022')
         this.value = toWei('10')
         await this.testToken.mint(this.validatorContract.address, this.value)
 
