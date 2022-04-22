@@ -6,8 +6,8 @@ contract UpgradableProxy is DelegateProxy {
     event ProxyUpdated(address indexed _new, address indexed _old);
     event OwnerUpdate(address _new, address _old);
 
-    bytes32 constant IMPLEMENTATION_SLOT = keccak256("p202.network.proxy.implementation");
-    bytes32 constant OWNER_SLOT = keccak256("p202.network.proxy.owner");
+    bytes32 constant IMPLEMENTATION_SLOT = keccak256("project202.proxy.implementation");
+    bytes32 constant OWNER_SLOT = keccak256("project202.proxy.owner");
 
     constructor(address _proxyTo) public {
         setOwner(msg.sender);

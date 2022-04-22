@@ -8,7 +8,7 @@ contract LibEIP712Domain is ChainIdMixin {
         abi.encodePacked(EIP712_DOMAIN_SCHEMA)
     );
 
-    string internal constant EIP712_DOMAIN_NAME = "Project202 Network";
+    string internal constant EIP712_DOMAIN_NAME = "Project202";
     string internal constant EIP712_DOMAIN_VERSION = "1";
     uint256 internal constant EIP712_DOMAIN_CHAINID = CHAINID;
 

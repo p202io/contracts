@@ -22,7 +22,7 @@ contract ChildERC20Proxified is ChildERC20, Initializable {
     // Overriding isOwner from Ownable.sol because owner() and transferOwnership() have been overridden by UpgradableProxy
     function isOwner() public view returns (bool) {
         address _owner;
-        bytes32 position = keccak256("p202.network.proxy.owner");
+        bytes32 position = keccak256("project202.proxy.owner");
         assembly {
             _owner := sload(position)
         }
