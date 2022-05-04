@@ -1,8 +1,6 @@
-# Matic contracts
+# Project202 contracts
 
-![Build Status](https://github.com/maticnetwork/contracts/workflows/CI/badge.svg)
-
-Ethereum smart contracts that power the [Matic Network](https://matic.network).
+Ethereum smart contracts that power the [Project202](https://p202.io).
 
 ### Install dependencies with
 
@@ -28,7 +26,7 @@ npm run truffle:compile
 npm run testrpc
 ```
 
-- Start Matic side chain. Requires docker.
+- Start Project202 side chain. Requires docker.
 
 ```
 npm run bor:simulate
@@ -40,7 +38,7 @@ npm run bor:simulate
 npm run bor:clean
 ```
 
-- Run a bor (our matic chain node) instance.
+- Run a bor (our Project202 side chain node) instance.
 
 ### Deploy Contracts
 

@@ -24,7 +24,7 @@ module.exports = async function(deployer, network, accounts) {
     let MaticWeth = await childChain.addToken(
       accounts[0],
       contractAddresses.root.tokens.MaticWeth,
-      'ETH on Matic',
+      'ETH on Project202',
       'ETH',
       18,
       false // _isERC721

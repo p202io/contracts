@@ -203,7 +203,7 @@ contract('StakeManager', async function(accounts) {
     async function batchDeploy() {
       await prepareForTest(4, 2).call(this)
 
-      this.stakeToken = await TestToken.new('MATIC', 'MATIC')
+      this.stakeToken = await TestToken.new('Project202', 'P202')
 
       await this.governance.update(
         this.stakeManager.address,

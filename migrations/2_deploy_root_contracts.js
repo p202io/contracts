@@ -47,7 +47,7 @@ const StakeManagerTestable = artifacts.require('StakeManagerTestable')
 const StakeManagerTest = artifacts.require('StakeManagerTest')
 
 const ExitNFT = artifacts.require('ExitNFT')
-const MaticWeth = artifacts.require('MaticWETH')
+const MaticWeth = artifacts.require('Project202Eth')
 const TestToken = artifacts.require('TestToken')
 const RootERC721 = artifacts.require('RootERC721')
 
@@ -176,11 +176,11 @@ module.exports = async function(deployer, network, accounts) {
     await deployer.deploy(Registry, GovernanceProxy.address)
     await deployer.deploy(ValidatorShareFactory)
     await deployer.deploy(ValidatorShare)
-    const maticToken = await deployer.deploy(TestToken, 'MATIC', 'MATIC')
+    const maticToken = await deployer.deploy(TestToken, 'Project202', 'P202')
     await deployer.deploy(TestToken, 'Test ERC20', 'TEST20')
     await deployer.deploy(RootERC721, 'Test ERC721', 'TST721')
     await deployer.deploy(StakingInfo, Registry.address)
-    await deployer.deploy(StakingNFT, 'Matic Validator', 'MV')
+    await deployer.deploy(StakingNFT, 'Project202 Validator', 'P202V')
 
     await deployer.deploy(RootChain)
     await deployer.deploy(RootChainProxy, RootChain.address, Registry.address, process.env.HEIMDALL_ID)

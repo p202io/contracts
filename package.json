@@ -31,14 +31,14 @@
   "pre-commit": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/maticnetwork/contracts.git"
+    "url": "https://github.com/p202io/contracts.git"
   },
-  "author": "Jaynti Kanani <jdkanani@gmail.com>",
+  "author": "Project202 <admin@p202.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/maticnetwork/contracts/issues"
+    "url": "https://github.com/p202io/contracts/issues"
   },
-  "homepage": "https://github.com/maticnetwork/contracts",
+  "homepage": "https://github.com/p202io/contracts",
   "config": {
     "mnemonics": "clock radar mass judge dismiss just intact mind resemble fringe diary casino"
   },

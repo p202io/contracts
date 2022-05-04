@@ -87,7 +87,7 @@ contract('ExitValidator', async function(accounts) {
 
         // root token / child chain / child token
         rootToken = await RootToken.new('Root Token', 'ROOT')
-        exitNFTContract = await ExitNFT.new('Matic Exit NFT', 'MATIC-NFT')
+        exitNFTContract = await ExitNFT.new('Project202 Exit NFT', 'P202-NFT')
 
         // child chain
         childChain = await ChildChain.new()

@@ -42,7 +42,7 @@ class Deployer {
     this.stakingInfo = await contracts.StakingInfo.new(this.registry.address)
     this.slashingManager = await contracts.SlashingManager.new(this.registry.address, this.stakingInfo.address, 'heimdall-P5rXwg')
     this.rootChain = await this.deployRootChain()
-    this.stakingNFT = await contracts.StakingNFT.new('Matic Validator', 'MV')
+    this.stakingNFT = await contracts.StakingNFT.new('Project202 Validator', 'P202V')
 
     let proxy = await contracts.StakeManagerProxy.new(
       utils.ZeroAddress
@@ -183,7 +183,7 @@ class Deployer {
     this.rootChain = await this.deployRootChain()
     this.stakingInfo = await contracts.StakingInfo.new(this.registry.address)
     this.stakeToken = await contracts.TestToken.new('Stake Token', 'STAKE')
-    this.stakingNFT = await contracts.StakingNFT.new('Matic Validator', 'MV')
+    this.stakingNFT = await contracts.StakingNFT.new('Project202 Validator', 'P202V')
 
     let stakeManager = await contracts.StakeManagerTestable.new()
     const rootChainOwner = wallets[1]

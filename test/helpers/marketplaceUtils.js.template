@@ -79,7 +79,7 @@ function getTransferTypedData({
       ]
     },
     domain: {
-      name: "Matic Network",
+      name: "Project202",
       version: "1",
       chainId: {{ borChainId }},
       verifyingContract: tokenAddress
