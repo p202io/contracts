@@ -10,8 +10,8 @@ npm install
 
 ### Compile
 
-bor-chain-id for Mainnet = 137
-bor-chain-id for TestnetV4 (Mumbai) = 80001
+bor-chain-id for Mainnet = 202
+bor-chain-id for TestnetV4 (Mumbai) = 80202
 
 ```
 npm run template:process -- --bor-chain-id <bor-chain-id>

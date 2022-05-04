@@ -78,6 +78,7 @@
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.4.0",
     "commander": "^4.0.1",
+    "dotenv": "^16.0.0",
     "ethereum-waffle": "^3.4.4",
     "ethereumjs-abi": "^0.6.5",
     "ethereumjs-block": "2.1.0",
