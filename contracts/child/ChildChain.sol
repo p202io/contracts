@@ -40,7 +40,7 @@ contract ChildChain is Ownable, StateSyncerVerifier, StateReceiver {
 
     constructor() public {
         //Mapping Project202 Token
-        tokens[0x61a960C3F213B80EaC761e2f996414AB52C08985] = 0x0000000000000000000000000000000000001010;
+        //tokens[0x61a960C3F213B80EaC761e2f996414AB52C08985] = 0x0000000000000000000000000000000000001010;
     }
 
     function onStateReceive(
