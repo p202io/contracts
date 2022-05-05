@@ -23,8 +23,8 @@ module.exports = async function(deployer, network, accounts) {
   }
 
   deployer.then(async() => {
-    await deployer.deploy(StakeManagerTestable)
-    await deployer.deploy(StakeManagerTest)
+    //await deployer.deploy(StakeManagerTestable)
+    //await deployer.deploy(StakeManagerTest)
 
     const stakeManager = await deployer.deploy(StakeManager)
     const stakeMangerProxy = await deployer.deploy(StakeManagerProxy, ZeroAddress)
