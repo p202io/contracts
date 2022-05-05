@@ -1,7 +1,7 @@
 node_modules
 build
 flatten
-contractAddresses.json
+contractAddresses*
 
 # ignore generated files
 contracts/root/predicates/TransferWithSigUtils.sol
