@@ -8,9 +8,7 @@ import {Common} from "../../common/lib/Common.sol";
 import {RLPEncode} from "../../common/lib/RLPEncode.sol";
 
 import {ERC721Predicate} from "./ERC721Predicate.sol";
-import {
-    ERC721PlasmaMintable
-} from "../../common/tokens/ERC721PlasmaMintable.sol";
+import {ERC721PlasmaMintable} from "../../common/tokens/ERC721PlasmaMintable.sol";
 
 contract MintableERC721Predicate is ERC721Predicate {
     struct MintableTokenInfo {

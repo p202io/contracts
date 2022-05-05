@@ -2,9 +2,7 @@ pragma solidity ^0.5.2;
 
 import {RLPReader} from "solidity-rlp/contracts/RLPReader.sol";
 
-import {
-    MarketplacePredicate
-} from "../root/predicates/MarketplacePredicate.sol";
+import {MarketplacePredicate} from "../root/predicates/MarketplacePredicate.sol";
 import {ERC20Predicate} from "../root/predicates/ERC20Predicate.sol";
 
 contract MarketplacePredicateTest is MarketplacePredicate {
