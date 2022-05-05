@@ -60,9 +60,9 @@ module.exports = {
           `wss://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_API_KEY}`
           //`https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_API_KEY}`
         ),
-      network_id: '4',
+      network_id: 4,
       gas: 8000000,
-      gasPrice: 2500000000, // 2.5 gwei
+      gasPrice: 7500000000, // 7.5 gwei
       skipDryRun: true
     },
     mainnet: {

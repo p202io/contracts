@@ -11,10 +11,10 @@ npm install
 ### Compile
 
 bor-chain-id for Mainnet = 202
-bor-chain-id for TestnetV4 (Mumbai) = 80202
+bor-chain-id for Testnet = 80202
 
 ```
-npm run template:process -- --bor-chain-id <bor-chain-id>
+npm run template:process --bor-chain-id <bor-chain-id>
 npm run truffle:compile
 ```
 
