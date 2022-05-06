@@ -34,7 +34,7 @@ module.exports = {
           `http://localhost:8545`
         ),
       network_id: '*', // match any network
-      gasPrice: '0'
+      //gasPrice: '0'
     },
     p202: {
       provider: () =>

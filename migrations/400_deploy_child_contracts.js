@@ -1,8 +1,6 @@
 const utils = require('./utils')
 
-const SafeMath = artifacts.require(
-  'openzeppelin-solidity/contracts/math/SafeMath.sol'
-)
+const SafeMath = artifacts.require('openzeppelin-solidity/contracts/math/SafeMath.sol')
 const ChildChain = artifacts.require('ChildChain')
 const MRC20 = artifacts.require('MRC20')
 
